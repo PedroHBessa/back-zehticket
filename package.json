@@ -1,0 +1,19 @@
+{
+  "name": "back-zehticket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PedroHBessa/back-zehticket.git"
+  },
+  "author": "Pedro Bessa",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PedroHBessa/back-zehticket/issues"
+  },
+  "homepage": "https://github.com/PedroHBessa/back-zehticket#readme"
+}
