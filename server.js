@@ -1,6 +1,9 @@
 
 const app = require('./config/express')();
+const database = require('./config/database');
 const port = app.get('port');
+
+
 
 // RODANDO NOSSA APLICAÇÃO NA PORTA SETADA
 app.listen(port, () => {
