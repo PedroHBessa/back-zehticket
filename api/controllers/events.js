@@ -17,15 +17,64 @@ module.exports = app => {
         description: req.body.description
       })
 
-    /*   constroller.removeEvent = (req, res) => {
-        const {
-          customerId
-        }
-      } */
-
-
       res.status(201).json(eventsMock)
+
     }
+
+      controller.removeEvent = (req, res) => {
+        const {
+          eventId,
+        } = req.params;
+
+        const foundEventIndex = eventsMock.data.findIndex(event => event.id === eventId)
+
+        if(foundEventIndex === -1){
+          res.status(404).json({
+            message: "Event not found",
+            success: false,
+            events: eventsMock,
+          });
+        } else {
+          eventsMock.data.splice(foundEventIndex, 1)
+          res.status(200).json({
+            message: "Event was removed",
+            success: true,
+            events: eventsMock,
+          })
+        }
+      }
+
+      controller.updateEvent = (req, res) => {
+        const {
+          eventId,
+        } = req.params;
+
+        const foundEventIndex = eventsMock.data.findIndex(event => event.id === eventId)
+
+        if(foundEventIndex === -1){
+          res.status(404).json({
+            message: "Event not found",
+            success: false,
+            events: eventsMock,
+          });
+        } else {
+
+          const newEvent = {
+            id: eventId,
+            name: req.body.name
+          }
+          eventsMock.data.splice(foundEventIndex, 1, newEvent)
+          res.status(200).json({
+            message: "Event was updated",
+            success: true,
+            events: eventsMock,
+          })
+        }
+      }
+
+
+      
+   
   
     return controller;
   }
