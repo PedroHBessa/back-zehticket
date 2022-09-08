@@ -2,13 +2,9 @@ const uuidv4 = require('uuid/v4')
 const events = require('../models/events')
 
 module.exports = app => {
-    const eventsDB = app.data.events
     const controller = {};
 
 
-    const {
-      events: eventsMock,
-    } = eventsDB
   
     controller.listEvents = async (req, res) => {
       const response =  await events.getEvents()
