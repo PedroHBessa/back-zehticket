@@ -1,4 +1,4 @@
-const {Sequelize, DataTypes} = require("sequelize")
+/* const {Sequelize, DataTypes} = require("sequelize")
 
 
 
@@ -17,7 +17,7 @@ const {Sequelize, DataTypes} = require("sequelize")
      }).catch((error) => {
         console.error('Unable to connect to the database: ', error);
      });
-    const Tickets = sequelize.define("tickets", {
+   /*  const Tickets = sequelize.define("tickets", {
         eventId: {
           type: DataTypes.STRING,
           allowNull: false
@@ -38,20 +38,20 @@ const {Sequelize, DataTypes} = require("sequelize")
         type: DataTypes.INTEGER,
         allowNull: true
         },
-    })
+    }) */
 
-    sequelize.sync().then(() => {
+  /*   sequelize.sync().then(() => {
       console.log('Tickets table created successfully!');
    }).catch((error) => {
       console.error('Unable to create table : ', error);
-   });
+   }); */
 
    /*  const addEvent = (data) => {Events.create(data).then(res => {
         console.log("Event created")
     }).catch((error) => {
         console.error('Failed to create a new record : ', error);
    });
-} */
+} 
     const getTickets = async (eventId) => { return Tickets.findAll({where: {eventId: eventId}}).then(res => {
         return {tickets: res}
     }).catch((error) => {
@@ -59,7 +59,7 @@ const {Sequelize, DataTypes} = require("sequelize")
     });
 }
  
-   /* const getEvents = async () => { return Events.findAll().then(res => {
+    const getEvents = async () => { return Events.findAll().then(res => {
     return {events: res}
     
     }).catch((error) => {
@@ -71,6 +71,7 @@ const {Sequelize, DataTypes} = require("sequelize")
      }).catch((error) => {
         console.error('Unable to create table : ', error);
      });
-    } */
+    } 
 
      module.exports = {getTickets}
+ */

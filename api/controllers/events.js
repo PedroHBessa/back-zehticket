@@ -15,19 +15,19 @@ module.exports = app => {
       const {
         eventId,
       } = req.params;
+      console.log(eventId)
       const response =  await events.getEvent(eventId)
       res.status(200).json(response);
     }
 
-    controller.saveEvent = (req, res) => {
-      events.addEvent({
-        title: req.body.title,
-        description: req.body.description,
-        date: req.body.date,
-        image: req.body.image
+    controller.createEvent = (req, res) => {
+      const eventId = uuidv4()
+      events.createEvent({
+        event: {...req.body.event, eventId: eventId},
+        tickets: {...req.body.ticket, eventId: eventId} 
     })
      
-      res.status(201).json(eventsMock)
+      res.status(201).json(req.body)
 
     }
 
