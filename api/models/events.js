@@ -1,23 +1,15 @@
 const {Sequelize, DataTypes} = require("sequelize")
+const database = require('../../config/database')
 
 
-
-    const sequelize = new Sequelize(
-        'zehticket',
-        'root',
-        'Qwe#974fqwe#974F',
-         {
-           host: 'localhost',
-           dialect: 'mysql'
-         }
-       );
+    // const sequelize = database
      
-     sequelize.authenticate().then(() => {
+     database.authenticate().then(() => {
         console.log('Connection has been established successfully.');
      }).catch((error) => {
         console.error('Unable to connect to the database: ', error);
      });
-    const Events = sequelize.define("events", {
+    const Events = database.define("events", {
       eventId: {
         type: DataTypes.STRING,
         allowNull: false
@@ -48,7 +40,7 @@ const {Sequelize, DataTypes} = require("sequelize")
           },
         
     })
-    const Tickets = sequelize.define("tickets", {
+    const Tickets = database.define("tickets", {
       eventId: {
         type: DataTypes.STRING,
         allowNull: false
@@ -62,7 +54,7 @@ const {Sequelize, DataTypes} = require("sequelize")
           allowNull: false
         },
   })
-    sequelize.sync().then(() => {
+    database.sync().then(() => {
       console.log('Events table created successfully!');
       console.log('Tickets table created successfully!');
    }).catch((error) => {

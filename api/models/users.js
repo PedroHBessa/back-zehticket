@@ -1,23 +1,15 @@
 const {Sequelize, DataTypes} = require("sequelize")
+const database = require('../../config/database')
 
 
-
-    const sequelize = new Sequelize(
-        'zehticket',
-        'root',
-        'Qwe#974fqwe#974F',
-         {
-           host: 'localhost',
-           dialect: 'mysql'
-         }
-       );
+  
      
-     sequelize.authenticate().then(() => {
+     database.authenticate().then(() => {
         console.log('Connection has been established successfully.');
      }).catch((error) => {
         console.error('Unable to connect to the database: ', error);
      });
-    const Users = sequelize.define("users", {
+    const Users = database.define("users", {
         name: {
           type: DataTypes.STRING,
           allowNull: false
@@ -32,7 +24,7 @@ const {Sequelize, DataTypes} = require("sequelize")
         }
     })
 
-    sequelize.sync().then(() => {
+    database.sync().then(() => {
       console.log('Users table created successfully!');
    }).catch((error) => {
       console.error('Unable to create table : ', error);

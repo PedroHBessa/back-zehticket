@@ -4,7 +4,6 @@ const users = require('../models/users')
 module.exports = app => {
     const controller = {};
     controller.me = async (req, res) => {
-      
       if(req.session.user){
         res.status(200).json(req.session.user);
       } else  {
@@ -31,6 +30,7 @@ module.exports = app => {
           email: login.response.email,
           isLogged: true
         }
+        
       res.status(200).json(req.session.user);
       }
     }

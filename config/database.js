@@ -1,19 +1,22 @@
+const {Sequelize, DataTypes} = require("sequelize")
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') })
 
-     
+const {
+  HOST,
+  SERVER,
+  USER,
+  PASSWORD,
+} = process.env
+const db = new Sequelize(
+    SERVER,
+    USER,
+    PASSWORD,
+        {
+            host: HOST,
+            dialect: "mysql"
+        }
+        );
 
-/* const mysqlConnection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'Qwe#974fqwe#974F',
-    database: 'zehticket',
-    multipleStatements: true
-})
-
-mysqlConnection.connect((err)=>{
-    if(!err){
-        console.log('connected to database')
-    } else {
-        console.log(err)
-    }
-  })
- */
+    
+        module.exports = db
