@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const config     = require('config');
 const consign = require('consign')
 var cors = require('cors');
+const session = require('express-session')
 
 module.exports = () => {
   const app = express();
@@ -17,8 +18,13 @@ module.exports = () => {
     extended: true
   }));
   app.use(bodyParser.json())
-
+  app.use(express.static('uploads'))
   app.use(express.static('public'));
+  app.use(session({
+    secret: 'iuashd98sahdsa',
+    resave: false,
+    saveUninitialized: true
+  }));
 
   // ENDPOINTS
   consign({cwd: 'api'})

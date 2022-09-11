@@ -1,6 +1,7 @@
 const uuidv4 = require('uuid/v4')
 const events = require('../models/events')
 
+
 module.exports = app => {
     const controller = {};
 
@@ -22,19 +23,27 @@ module.exports = app => {
 
     controller.createEvent = (req, res) => {
       const eventId = uuidv4()
+      const event = JSON.parse(req.body.event)
+      const ticket = JSON.parse(req.body.tickets)
       events.createEvent({
-        event: {...req.body.event, eventId: eventId},
-        tickets: {...req.body.ticket, eventId: eventId} 
+        event: {...event, eventId: eventId, image: req.file.filename},
+        tickets: {...ticket, eventId: eventId} 
     })
      
       res.status(201).json(req.body)
 
     }
 
+    
+    controller.media = (req, res) => {
+     
+    }
+
     controller.removeEvent = (req, res) => {
       const {
         eventId,
       } = req.params;
+
 
       const foundEventIndex = eventsMock.data.findIndex(event => event.id === eventId)
 

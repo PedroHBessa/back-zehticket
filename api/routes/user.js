@@ -6,4 +6,10 @@ module.exports = app => {
     
       app.route('/api/login/')
       .post(controller.login)
+
+      app.route('/api/logout/')
+      .get(controller.logout)
+
+      app.route('/api/me/')
+      .get(controller.me)
   }

@@ -54,19 +54,15 @@ const {Sequelize, DataTypes} = require("sequelize")
        
       }
       const login = async (data) => {
-        console.log(data.email)
        return Users.findOne({where: {email: data.email}}).then(res => {
           if(res === null){
-            console.log("usuário não cadastrado")
-            return "User not found"
+            return {response: res, message: 'user not found'}
           } else {
             return Users.findOne({where: {email: data.email, password: data.password}}).then(res => {
               if(res === null){
-                console.log('Wrong email or password')
-                return "Wrong email or password"
+                return {response: res, message: 'wrong email or passaword'}
               } else {
-                console.log("login successfull")
-                return "logged in"
+                return {response: res, message: 'logged in'}
               }
             }
             )
